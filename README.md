@@ -28,7 +28,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 >> today:
 >> - DSL languages (e.g. TensorFlow)
 >> - optimization frameworks (e.g., Numba, Polly/Pluto, Tiramisu)
->> - many either built on top of or benefiting from LLVM IR. 
+>> - many either built on top of or benefiting from LLVM IR.
 >> - They have been immensely successful on a single node where there is
 >>   abundance of parallelism and cost of accessing data is relatively low.
 >> - distributed efforts mostly based on fork-join model and built on MPI
@@ -53,7 +53,7 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 >>    on many core resources such as GPUs. However, it also improves concurrency
 >>    and therefore throughput by relying on other programming constructs such
 >>    as _data-flow_ and _futures_.
->> 3. It is built on top of the well established technologies such as HPX,
+>> 3. It is built on top of the well established technologies such as HPX, 
 >>    MLIR (successor of LLVM IR), Blaze, ... 
 >> 4. HPX abstracts away many MPI programming's complexities, and PhySL makes it
 >>    easy to build specializations on top of HPX.
@@ -68,14 +68,14 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 >>    - JetLag facilitates application deployment (local and remote), also
 >>      collects and visualizes profiling data.
 >>    - easy to hook with third-party libraries such as Tiramisu
->>    - multi-granular performance analysis (PhySL task, HPX thread,...)
+>>    - multi-granular performance analysis (PhySL task, HPX thread, ...)
 >> 9. Already have the infrastructure for development and test (Rostam)
 
 > Who cares? If you are successful, what difference will it make?
 >> 1. Most of scientific community as they widely benefit from AI.
 >> 2. Tightly related with the AI building blocks and can provide insights for
 >>    better understanding of machine learning.
->> 3. Open-source community.
+>> 3. Opensource community
 >>    - liberal license
 >>    - contribution to other opensource projects such as: LLVM, Python, Blaze, ...
 >> 4. it would be nice if we can come up with concrete applications such as NLP
@@ -95,12 +95,12 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 > What are the mid-term and final “exams” to check for success?
 >> mid-term (single machine):
 >> - expand GPU
->> - enable triggering optimization through high-level directives (e.g.,
+>> - enable triggering optimization through high-level directives (e.g., 
 >>   decorators)
 >> - prototype of new algorithms benefiting from concurrency in distributed
 >>   systems.
 >> - User guided deployment and profiling of application.
->> 
+>>  
 >>
 >> long-term:
 >> - capability to automatically detect and apply optimization based on the
@@ -110,9 +110,62 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 >> - interactive and intuitive user interface
 >>    + Jupyter
 >>    + Traveler integrated
->>    + Graph based visualization and analyis of control flow graph and
->>      execution trees.
+>>    + Graph based visualization and analysis of control-flow graphs and
+>>      execution-trees.
 >> - develop efficient math and solver libraries on HPX.
+
+## Related Work
+
+1. Second Order: 
+   [1](http://proceedings.mlr.press/v28/sutskever13.pdf),
+   [2](https://openaccess.thecvf.com/content_CVPR_2019/papers/Osawa_Large-Scale_Distributed_Second-Order_Optimization_Using_Kronecker-Factored_Approximate_Curvature_for_Deep_CVPR_2019_paper.pdf),
+   [3](https://www.researchgate.net/profile/Roberto_Battiti/publication/2498372_First-_and_Second-Order_Methods_for_Learning_Between_Steepest_Descent_and_Newton%27s_Method/links/5537b11c0cf2058efdeae0b6/First-and-Second-Order-Methods-for-Learning-Between-Steepest-Descent-and-Newtons-Method.pdf)
+
+2. Technologies
+   - MLIR
+      + [Language Reference](https://mlir.llvm.org/docs/LangRef/)
+      + [Python binding](https://mlir.llvm.org/docs/Bindings/Python/)
+
+   - [kokkos](https://github.com/kokkos/kokkos)
+   - [HPX](https://github.com/stellar-group/hpx)
+   - [SHAD](https://github.com/pnnl/SHAD)
+   - [I/O](http://stellar.cct.lsu.edu/files/phylanx_kickoff/year_two_kickoff/kheirkhahan_io_operations_04.19.18.pdf)?
+
+
+3. Libraries
+   - [Phylanx](https://github.com/STEllAR-GROUP/phylanx/)
+   - APEX
+       + [src](https://github.com/khuck/xpress-apex)
+       + [Performance Analysis](https://github.com/khuck/SC15_APEX_tutorial/blob/master/HPX_APEX_TAU_Tutorial_Slides.pdf)
+
+   - Traveler
+       + [src](https://github.com/hdc-arizona/traveler-integrated)
+       + [Visualization](http://stellar.cct.lsu.edu/files/phylanx_kickoff/year_three-kickoff/presentations/isaacs_traveler.pdf)
+
+   - JetLag
+       + [src](https://github.com/STEllAR-GROUP/JetLag/pull/6)
+       + [workflow](https://docs.google.com/presentation/d/1KhPByW69XtpKhAmcBvT3Ay1lvrFbYvG4XkJaV4rtcyg/edit#slide=id.p)
+
+   - Blaze
+       + [src](https://bitbucket.org/blaze-lib/blaze/src/master/), [GPU](https://github.com/STEllAR-GROUP/blaze_cuda/)
+       + blazemark: [src](https://bitbucket.org/blaze-lib/blaze/src/master/blazemark/), [analyis](https://github.com/scheherzade/Blazemark/tree/master/data)
+       + [HPX backend](http://stellar.cct.lsu.edu/files/phylanx_kickoff/year_three-kickoff/presentations/shirzad_blaze.pdf)
+
+   - Tiramisu
+      + Publications: 
+        [1](https://arxiv.org/pdf/1804.10694.pdf),
+        [2](https://arxiv.org/pdf/2005.04091.pdf)
+      + [project](https://github.com/Tiramisu-Compiler/), [src](https://github.com/Tiramisu-Compiler/tiramisu/) repos
+
+4. Past Slides
+   [SC18](https://docs.google.com/presentation/d/1iN5_54EMknjB3JYY1m8cb4hYzV7gXWxBdJq8TO1lPyE/edit#slide=id.g4547084e32_0_0), 
+   [JIT](https://docs.google.com/presentation/d/1kgI4TEXTRCLC7sfI6sht64WtlO-X_kLaoJ6VTB5YsNA/edit#slide=id.g28ef27b4a8_0_179), 
+   [Blaze](https://docs.google.com/presentation/d/1Iaega8TctQX_EgcfnMk76evZD1AryhNrMTpe1Mxx8gg/edit#slide=id.g28ef27b4a8_0_179)
+
+
+
+
+# Progress
 
 ## Abstract (Draft)
 Transcompiling high-level programs (e.g., Python) down to fast machine code
@@ -126,7 +179,7 @@ environments, and also software tools facilitating data movement between
 nodes, i.e., through the network. Most efforts to overcome this challenge
 have relied on fork-and-join paradigm, and commonly implemented close to
 transformation layer on top of MPI. The fork-and-join model is inherently
-vulnerable to idle time imposed by the synchronization step. In addition,
+vulnerable to idle time imposed by the synchronization step. In addition, 
 although MPI is extremely efficient and portable, writing high-throughput on
 top of it requires expert knowledge and Many works before This is one of ca
 the reason behind the rise of DSLs in past decade. The greatest example would
@@ -136,18 +189,22 @@ parallelism is available.
 
 Build on tripod of existing robust software:
 1. HPX C++ standard conforming (10+ years and running) runtime, also:
-   + widely used in open-source community and national labs:
+   + widely used in opensource community and national labs:
      * Octo-Tiger
      * DCA++
+
    + supports dataflow programming paradigms; both CPU and GPU tasks.
      * control over **parallelism** and **concurrency** (<u>concurrency
        between nodes</u>)
+
    + backend of many existing libraries:
      * Phylanx
      * blaze, blaze_cuda
      * FleCSI
      * Kokkos
+
 2. Python
+
 3. [MLIR](https://mlir.llvm.org/docs/LangRef/) is designed to be used in three
 different forms: 
    - a human-readable textual form **suitable for debugging**
@@ -156,7 +213,7 @@ different forms:
 
 HPX is the only C++ standard conforming runtime:
 
-   + widely used in open-source community and national labs.
+   + widely used in opensource community and national labs.
    + supports dataflow programming paradigms.
    + backend of many libraries:
       * Kokkos
@@ -167,7 +224,6 @@ HPX is the only C++ standard conforming runtime:
    2. PhySL
    3. Visualization and HMI
    4. Configurable DSLs built on top
-
 
    # References
    - demystifying
