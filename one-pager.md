@@ -37,17 +37,19 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 ## Research
 
-* AI driven runtime system
+### Theory
 * 2nd order optimizations for high precision mapping and avoiding numerical
   problems.
-
-* Security
-* Asynchronous execution + dataflow model to maximize parallelism and
-  concurrency.
-
 * Polyhedral
+* Security
 
-## Technology
+### Technology
+* AI driven runtime system
+* HPX asynchronous execution + dataflow model to maximize parallelism and
+  concurrency
+* Security
+
+## Enabling Technologies
 
 * HPX
   + C++ standard conforming API for concurrency and parallelism
