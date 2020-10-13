@@ -50,6 +50,9 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 * HPX asynchronous execution + dataflow model to maximize parallelism and
   concurrency
 * Security
+* Visualization
+  * [Traveler](https://github.com/hdc-arizona/traveler-integrated)
+  * [Instruction-Level Visualization](https://www.ece.lsu.edu/koppel/pubs/vpa-2014-paper.pdf)
 
 ## Enabling Technologies
 
