@@ -41,15 +41,14 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 * 2nd order optimizations for high precision mapping and avoiding numerical
   problems.
-* Polyhedral
-* Security (profiling info?)
+* Polyhedral optimization applied to application source code
 
 ### Technology
 
 * AI driven runtime system
 * HPX asynchronous execution + dataflow model to maximize parallelism and
   concurrency
-* Security
+* Security provided by user access controls to data consumed by applications (consider a 'security' primitive that wraps the entire PhySL code)
 * Visualization
   * [Traveler](https://github.com/hdc-arizona/traveler-integrated)
   * [Instruction-Level Visualization](https://www.ece.lsu.edu/koppel/pubs/vpa-2014-paper.pdf)
@@ -61,11 +60,16 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 * APEX
   * provides any performance data you may need
-  * dynamic execution policy interface (API?) for HPX and more
+  * dynamic execution policy interface (API?) for HPX
+  * provides runtime feedback mechanism offering dynamic
+    runtime autotuning to HPX applications
 
 * Traveler
   * fluid human machine/data interface through intuitive visualization
   * helps us better understand and interact with the machine, a.k.a, AI
+  * provides users the ability to triage where to hand tune application
+    application code; users can immediately see where the most effort can
+    yield significant performance improvements.
 
 * Blaze
   1. executing array computations on HPX threads.
@@ -76,14 +80,21 @@ file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
   * HPX's distributed array processing library. It is worth mentioning that it
     is heavily based on the Blaze math library which in turn uses HPX threads
     for execution
+  * Distributed array interpreter; provides python users the ability to automatically
+    scale application code from single machines, to Supercomputers using HPX.
+  * The use of HPX exposes Phylanx to dynamic runtime improvements offered by APEX
+  * Collects performance data from APEX that is accessible and rendered by Traveler
 
 * PhySL (Phylanx Specialization Language)
   * first **specialization language** allowing **asynchronous execution** of
     python code on AMTs (tested with HPX)
+  * Phyfleaux, using MIT's tiramisu polyhedral optimizer, provides unique
+    code optimization capabilities not found in python or other distributed
+    array interpreters (Spartan, Tensorflow, ONNX, Spark).
 
 * [JetLag](https://www.cct.lsu.edu/~sbrandt/JetLag-Talk-PyHPC2020.mp4)
   * Usability; easy access to any computation resource including science
-    gateways
+    gateways and kubernetes cloud infrastructure.
 
   * [talk](https://www.cct.lsu.edu/~sbrandt/JetLag-Talk-PyHPC2020.mp4)
 
