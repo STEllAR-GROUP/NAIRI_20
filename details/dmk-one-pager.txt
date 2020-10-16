@@ -1,0 +1,92 @@
+Idea for contribution NAIRI_20 project.
+
+David M. Koppelman
+koppel@ece.lsu.edu
+
+This "idea" is based on assumptions (wild guesses better describes it)
+about the properties of NN algorithms derived from second-order
+methods and on assumptions about Blaze, Traveler, Phylanx, etc. Don't
+be shy about offering significant corrections and pointing out things
+that have already been done.
+
+--------------------
+Here is my idea in plain English written for us (the proposal writers):
+
+I'm assuming that the kind of computation needed to realize
+second-order methods will be significantly different than the tensor
+and convolution operations used to compute NN models conventionally.
+I'm also assuming that they either naturally form fine-grained chunks
+or can easily be decomposed into fine-grain chunks.
+
+As a starting point there is some system that will transform a NN
+model into a variety of forms, as is done in research proposals such
+as Timeloop and is probably done in production systems like
+TensorFlow. To that we would add a way of generating some
+representation of code produced for second-order computations. We
+would also add transformations (of second order and conventional
+intermediate forms) into finer-grain forms that would use data-flow
+type scheduling (for HPX++).
+
+This transformation system will use performance models to guide a
+search realizing some goal (minimum time, minimum resource usage,
+etc.). One of our contributions will be getting the search to work
+well with data-flow scheduling, high-latency inter-node communication,
+and whatever transformation challenges and opportunities second-order
+methods bring.
+
+Components with which other investigators are involved handle
+transformation, scheduling, data collection, and visualization to some
+degree. My own contribution would be in low-level modeling and code
+development. For example, for a particular kernel finding tight bounds
+on execution time in terms of size that might allow a higher level to
+balance grain size with overhead, perhaps using a reasonable estimate
+of cache pressure.
+
+Parashar 19 (Timeloop)
+https://ieeexplore.ieee.org/abstract/document/8695666
+
+
+--------------------
+Here is wording that is proposal-like but hardly in anything close
+to complete form:
+
+
+The NN algorithms based on second-order methods have the potential to
+outperform conventional approaches, in particular due to deeper
+parallelism, but realizing this potential requires special care.
+[Blah, blah,...]
+
+To achieve this NAIRI_20 will use a model-driven system to transform
+and schedule tasks generated from the NN model by both the
+second-order and conventional generators. This will be much broader
+than the single-layer optimization performed by systems such as
+Timeloop (Parashar 19 ISPASS), and will account for the finer-grained
+work generation enabled by HPX++ and the significant inter-node
+latency on multi-node computing clusters.
+
+The models themselves will be developed side-by-side with tightly
+coded computation kernels. Kernels (in the CUDA sense or more
+generally) which are tuned using performance counters to make the best
+use of hardware including the latest instruction-set extensions. The
+collecting, managing, and displaying of the performance counter data
+will be built into the system and is an extension of existing projects
+by the investigators.
+
+The project will develop higher-level models which describe the
+expected throughput of some fine-grain data-flow-like workload,
+accounting for staging and startup overheads.
+
+These models will be used at the highest levels by the system that
+explores realizations of some NN model (conventional or second order),
+enabling it to find a configuration that satisfies a user-provided
+goal (reduce energy use, reduce computation time, etc).
+
+
+
+
+
+
+
+
+
+
